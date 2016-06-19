@@ -1,0 +1,417 @@
+/* ====-----------------====
+   Whitespace Reset
+   ====-----------------==== */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* ====-----------------====
+   Main CSS
+   ====-----------------==== */
+html,
+body {
+  height: 100%;
+}
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+  color: #060606;
+}
+a {
+  text-decoration: none;
+  color: #060606;
+}
+a:hover {
+  color: #148fd5;
+}
+aside {
+  position: fixed;
+  background: #464f77;
+  color: #a3a7bb;
+  width: 335px;
+  float: left;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 61px 0 0 0;
+}
+.lists + .lists {
+  margin-top: 55px;
+}
+aside h2 {
+  display: inline-block;
+  color: #fff;
+}
+h2:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  width: 26px;
+  height: 26px;
+  margin: 0 10px 0 -36px;
+  background: transparent url("/img/list_icon.png") 0 0 no-repeat;
+}
+h2.completed:before {
+  background-image: url("/img/list_completed.png");
+}
+aside li,
+aside header {
+  box-sizing: border-box;
+  padding: 11px 0 11px 136px;
+}
+aside header {
+  padding-top: 11px;
+  font-size: 18px;
+}
+.selected {
+  background: #383f5f;
+  color: #fff;
+}
+.badge {
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 2px 6px;
+  border-radius: 10px;
+  height: 20px;
+  float: right;
+  margin-right: 32px;
+  display: inline-block;
+  background: #6b7292;
+  vertical-align: middle;
+  text-align: center;
+}
+/* aside header .badge {
+  height: 22px;
+  border-radius: 12px;
+} */
+.selected .badge {
+  background: #148fd5;
+}
+.completed li {
+  text-decoration: line-through;
+}
+main {
+  box-sizing: border-box;
+  width: calc(100% - 335px);
+  float: right;
+  padding: 0 100px 0 20px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  width: calc(100% - 335px);
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  left: 335px;
+}
+.modal.show {
+  display: block;
+}
+.modal fieldset {
+  background: #fff;
+  display: block;
+  box-sizing: border-box;
+  margin: 107px auto 0 auto;
+  padding: 37px 39px 39px 30px;
+  width: 575px;
+  height: 402px;
+  box-sizing: border-box;
+}
+.modal th {
+  text-align: left;
+  width: 110px;
+  vertical-align: top;
+  padding: 10px 0 0 0;
+  box-sizing: border-box;
+}
+.modal th,
+.modal td {
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+.modal input,
+.modal button {
+  box-sizing: border-box;
+  height: 36px;
+  font: normal 16px Helvetica, Arial, sans-serif;
+  color: #070707;
+}
+.modal input[type="text"],
+.modal input[type="number"],
+.modal textarea {
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.modal input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+}
+.modal input[type="number"] {
+  box-sizing: border-box;
+  width: 116px;
+}
+.modal input[type="number"] + div {
+  display: inline-block;
+}
+.modal input[type="number"] + div:before {
+  text-align: center;
+  content: "/";
+  width: 24px;
+  display: inline-block;
+}
+.modal input[type="submit"],
+.modal button {
+  width: 184px;
+  background: #148fd5;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+.modal textarea {
+  width: 100%;
+  height: 144px;
+  padding-top: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  resize: none;
+}
+.modal button {
+  margin-left: 18px;
+}
+.hamburger {
+  position: absolute;
+  top: 23px;
+  height: 18px;
+  width: 23px;
+  display: none;
+  content: "";
+  background: transparent url("/img/hamburger.png") 0 0 no-repeat;
+  cursor: pointer;
+}
+input[type="checkbox"] {
+  display: none;
+}
+article {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 72px 0 0 0;
+}
+article header {
+  margin: 0 0 42px 0;
+}
+h1 {
+  font-size: 21px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 18px;
+}
+article .badge {
+  background: #148fd5;
+  color: #fff;
+  margin: 0;
+  float: none;
+}
+.new-item {
+  padding-bottom: 12px;
+}
+.new-item [type=text] {
+  color: #148fd5;
+  border: none;
+  font-size: 1.25em;
+  vertical-align: middle;
+}
+.new-item [type=text]:focus {
+  outline: none;
+}
+.new-item [type=submit] {
+  cursor: pointer;
+  border: none;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  margin: 0 12px;
+  background: transparent url("/img/new_item.png") 0 0 no-repeat;
+}
+.list li {
+  width: 100%;
+  border-top: 1px solid #e7e7e7;
+  padding: 15px 0;
+  vertical-align: middle;
+  display: relative;
+}
+.list li .checkbox {
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  margin: 0 12px;
+  content: "";
+  background: transparent url("/img/check_box.png") 0 0 no-repeat;
+}
+.list li a {
+  margin-left: 37px;
+}
+.list li.done a {
+  color: #b3b3b3;
+  text-decoration: line-through;
+}
+.list li.done .checkbox {
+  background-image: url("img/check_box_done.png");
+}
+.due-date {
+  color: #aaa;
+}
+.trash {
+  display: inline-block;
+  float: right;
+  width: 16px;
+  height: 17px;
+  content: "";
+  background: transparent url("img/trash.png") 0 0 no-repeat;
+}
+@media (max-width: 825px) {
+  .hamburger {
+    display: inline-block;
+  }
+  aside {
+    display: none;
+    width: 250px;
+  }
+  aside li,
+  aside header {
+    padding-left: 60px;
+  }
+  #menu-toggle:checked + aside {
+    display: inline-block;
+  }
+  main {
+    padding-right: 20px;
+  }
+  main,
+  .modal {
+    width: 100%;
+  }
+  .modal {
+    left: 0;
+  }
+  #menu-toggle:checked + aside + main {
+    width: calc(100% - 250px);
+  }
+}

@@ -1,0 +1,25 @@
+include ./_mixins
+
+doctype html
+html
+  head
+    title= title
+    +stylesheet_link_tag('application')
+    +javascript_include_tag('vendor/all')
+    +javascript_include_tag('handlebars_templates')
+  body
+    input(type="checkbox" id="menu-toggle")
+    aside
+    main
+      label.hamburger(for="menu-toggle")
+
+      article.list
+      block content
+
+
+    +javascript_include_tag('application')
+    +javascript_include_tag('models/todo')
+    +javascript_include_tag('collections/list')
+    +javascript_include_tag('views/application', 'views/todo', 'views/todo_modal')
+    //- script(type='text/javascript').
+      //- app.List = new List(!{JSON.stringify(list)});
