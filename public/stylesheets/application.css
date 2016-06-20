@@ -215,15 +215,11 @@ main {
   padding: 0 100px 0 20px;
 }
 .modal {
-  display: none;
   position: fixed;
   width: calc(100% - 335px);
   height: 100%;
   background: rgba(0,0,0,0.2);
   left: 335px;
-}
-.modal.show {
-  display: block;
 }
 .modal fieldset {
   background: #fff;
@@ -373,7 +369,7 @@ article .badge {
   text-decoration: line-through;
 }
 .list li.done .checkbox {
-  background-image: url("img/check_box_done.png");
+  background-image: url("/img/check_box_done.png");
 }
 .due-date {
   color: #aaa;
@@ -384,7 +380,7 @@ article .badge {
   width: 16px;
   height: 17px;
   content: "";
-  background: transparent url("img/trash.png") 0 0 no-repeat;
+  background: transparent url("/img/trash.png") 0 0 no-repeat;
 }
 @media (max-width: 825px) {
   .hamburger {

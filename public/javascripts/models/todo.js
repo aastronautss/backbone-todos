@@ -1,7 +1,7 @@
-var Todo = Backbone.Model.extend({
+App.Todo = Backbone.Model.extend({
   defaults: {
-    due_date: '',
     title: '',
+    due_date: Date.now(),
     description: '',
     completed: false
   },

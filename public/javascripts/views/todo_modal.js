@@ -1,3 +1,3 @@
-var TodoModalView = Backbone.View.extend({
+App.TodoModalView = Backbone.View.extend({
 
 });

@@ -8,18 +8,27 @@ html
     +javascript_include_tag('vendor/all')
     +javascript_include_tag('handlebars_templates')
   body
-    input(type="checkbox" id="menu-toggle")
-    aside
-    main
-      label.hamburger(for="menu-toggle")
+    #todo-app
+      input(type="checkbox" id="menu-toggle")
+      aside
+      main
+        label.hamburger(for="menu-toggle")
+        article.list
+          header
+            h1
+            .badge
+          .new-item
+            form(action='' method='post')
+              input(type='submit' value='')
+              input(name='title' type='text' placeholder='Create New Todo')
+          ul.items
 
-      article.list
-      block content
+        block content
 
 
     +javascript_include_tag('application')
     +javascript_include_tag('models/todo')
     +javascript_include_tag('collections/list')
     +javascript_include_tag('views/application', 'views/todo', 'views/todo_modal')
-    //- script(type='text/javascript').
-      //- app.List = new List(!{JSON.stringify(list)});
+    script(type='text/javascript').
+      new App.ApplicationView;
