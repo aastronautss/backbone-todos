@@ -1,0 +1,28 @@
+<div class="lists">
+  <header class="all">
+    <h2 class="all_todos">All Todos</h2>
+    <div class="badge">4</div>
+  </header>
+  <ul>
+    {{#each incomplete}}
+      <li data-filter="{{@key}}">
+        {{label}}
+        <div class="badge">{{count}}</div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="lists">
+  <header class="comp">
+    <h2 class="completed">Completed</h2>
+  </header>
+
+  <ul class="completed">
+    {{#each complete}}
+      <li data-filter="{{@key}}">
+        {{label}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

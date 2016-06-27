@@ -1,7 +1,5 @@
 App.ApplicationView = Backbone.View.extend({
   el: '#todo-app',
-  sidebar_template: App.templates.sidebar,
-
   events: {
     'submit .new-item form': 'createNewTodo'
   },
@@ -30,7 +28,7 @@ App.ApplicationView = Backbone.View.extend({
   },
 
   refreshSidebar: function() {
-
+    var view = new App.SidebarView();
   },
 
   render: function() {
@@ -39,7 +37,6 @@ App.ApplicationView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.$sidebar = $('aside');
     this.$items = $('ul.items');
     this.$new_todo_form = $('.new-item form');
 
@@ -48,7 +45,7 @@ App.ApplicationView = Backbone.View.extend({
     });
 
     this.listenTo(App.Todos, 'add', this.addTodoView);
-    this.listenTo(App.Todos, 'change:completed', this.refreshItems);
+    this.listenTo(App.Todos, 'change:completed', this.render);
     this.listenTo(App.Todos, 'change', this.refreshItems);
   }
 });
