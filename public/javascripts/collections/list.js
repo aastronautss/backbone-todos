@@ -12,30 +12,32 @@ var List = Backbone.Collection.extend({
       var complete = todo.get('completed') ? 'complete' : 'incomplete';
       var month = todo.getMonth();
       var year = todo.getYear();
-      var month_due = '' + month + '_' + year;
+      var label_name = '' + month + '_' + year;
       var filter_group = filters[complete];
 
-      if(!_(filter_group).has(month_due)) {
+      if (!_(filter_group).has(label_name)) {
         var new_filter = {
-          label: month_due.replace('_', '/'),
+          label: label_name.replace('_', '/'),
           month: month,
           year: year,
           count: 1
         };
 
-        filter_group[month_due] = new_filter;
+        if (complete === 'complete') { label_name = label_name + "_c"; }
+
+        filter_group[label_name] = new_filter;
       }
       else {
-        filter_group[month_due].count += 1;
+        filter_group[label_name].count += 1;
       }
     });
 
     filters.all = {
       label: 'All Todos',
-      count: this.reduce(function(a, b) { return a + b; }, 0)
+      count: this.select(function(todo) { return !todo.get('completed'); }).length
     };
 
-    filters.all_completed = {
+    filters.all_c = {
       label: 'Completed'
     };
 

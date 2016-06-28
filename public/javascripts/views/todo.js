@@ -61,6 +61,42 @@ App.TodoView = Backbone.View.extend({
     this.$modal.off();
   },
 
+  setVisibility: function() {
+    var filter_key = App.filter;
+    var hide = !(this.matchFilter(filter_key));
+
+    this.$el.toggleClass('hidden', hide);
+  },
+
+  parseFilter: function(filter_key) {
+    var filter = {};
+    var components = filter_key.split('_');
+    if (_(components).last() === 'c') { filter.completed = true; }
+    if (_(components).first() === 'all') { return filter; }
+    if (_.isNumber(+components[0]) && _.isNumber(+components[1])) {
+      filter.due_month = +components[0];
+      filter.due_year = +components[1];
+    }
+
+    return filter;
+  },
+
+  matchFilter: function(filter_key) {
+    var match = true;
+    var filter = this.parseFilter(filter_key);
+
+    if (filter.completed !== undefined) {
+      match = filter.completed === this.model.get('completed');
+    }
+
+    if (filter.due_month !== undefined && filter.due_year !== undefined) {
+      match = match && (filter.due_month === this.model.getMonth()
+                        && filter.due_year === this.model.getYear());
+    }
+
+    return match;
+  },
+
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     this.$el.toggleClass('done', this.model.get('completed'));
@@ -70,6 +106,9 @@ App.TodoView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo(App.Todos, 'filter', this.setVisibility);
+    this.listenTo(App.Todos, 'change', this.setVisibility);
+
     this.render();
   }
 });

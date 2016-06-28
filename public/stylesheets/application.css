@@ -132,6 +132,9 @@ html,
 body {
   height: 100%;
 }
+.hidden {
+  display: none;
+}
 body {
   font: normal 16px Helvetica, Arial, sans-serif;
   color: #060606;

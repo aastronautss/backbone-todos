@@ -1,11 +1,11 @@
 <div class="lists">
-  <header class="all">
+  <header class="all filter" data-filter="all">
     <h2 class="all_todos">All Todos</h2>
-    <div class="badge">4</div>
+    <div class="badge">{{all.count}}</div>
   </header>
   <ul>
     {{#each incomplete}}
-      <li data-filter="{{@key}}">
+      <li class="filter" data-filter="{{@key}}">
         {{label}}
         <div class="badge">{{count}}</div>
       </li>
@@ -14,13 +14,13 @@
 </div>
 
 <div class="lists">
-  <header class="comp">
+  <header class="comp filter" data-filter="all_c">
     <h2 class="completed">Completed</h2>
   </header>
 
   <ul class="completed">
     {{#each complete}}
-      <li data-filter="{{@key}}">
+      <li class="filter" data-filter="{{@key}}">
         {{label}}
       </li>
     {{/each}}

@@ -1,18 +1,25 @@
 App.router = Backbone.Router.extend({
   routes: {
-    '*filter': 'applyFilter',
+    '/': 'default',
+    ':filter': 'applyFilter'
+  },
 
-    applyFilter: function(param) {
-      if (param) {
-        param = param.trim();
-      }
+  default: function() {
+    App.filter = 'all';
 
-      App.filter = param || '';
+    App.Todos.trigger('filter');
+  },
 
-      App.Todos.trigger('filter');
+  applyFilter: function(param) {
+    if (param) {
+      param = param.trim();
     }
+
+    App.filter = param || '';
+
+    App.Todos.trigger('filter');
   }
 });
 
-app.TodoRouter = new router();
+App.TodoRouter = new App.router();
 Backbone.history.start();

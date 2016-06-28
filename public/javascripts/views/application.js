@@ -19,6 +19,10 @@ App.ApplicationView = Backbone.View.extend({
     this.$items.prepend(view.el);
   },
 
+  renderHeader: function() {
+    var filters = App.Todos.getFilters();
+  },
+
   refreshItems: function() {
     this.$items.html('');
     var active = App.Todos.where({ completed: false });
@@ -45,7 +49,9 @@ App.ApplicationView = Backbone.View.extend({
     });
 
     this.listenTo(App.Todos, 'add', this.addTodoView);
+    this.listenTo(App.Todos, 'add', this.refreshSidebar);
     this.listenTo(App.Todos, 'change:completed', this.render);
     this.listenTo(App.Todos, 'change', this.refreshItems);
+    this.listenTo(App.Todos, 'filter', this.renderHeader);
   }
 });

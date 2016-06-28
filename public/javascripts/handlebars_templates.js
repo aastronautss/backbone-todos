@@ -3,20 +3,30 @@ this["JST"] = this["JST"] || {};
 this["JST"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<li data-filter=\""
+  return "<li class=\"filter\" data-filter=\""
     + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
     + "\">"
     + alias4(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data}) : helper)))
     + "<div class=\"badge\">"
     + alias4(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"count","hash":{},"data":data}) : helper)))
     + "</div></li>";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<li class=\"filter\" data-filter=\""
+    + alias4(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data}) : helper)))
+    + "</li>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : {};
 
-  return "<div class=\"lists\"><header class=\"all\"><h2 class=\"all_todos\">All Todos</h2><div class=\"badge\">4</div></header><ul>"
+  return "<div class=\"lists\"><header class=\"all filter\" data-filter=\"all\"><h2 class=\"all_todos\">All Todos</h2><div class=\"badge\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.all : depth0)) != null ? stack1.count : stack1), depth0))
+    + "</div></header><ul>"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.incomplete : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</ul></div><div class=\"lists\"><header class=\"comp\"><h2 class=\"completed\">Completed</h2></header><ul class=\"completed\">"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.complete : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul></div><div class=\"lists\"><header class=\"comp filter\" data-filter=\"all_c\"><h2 class=\"completed\">Completed</h2></header><ul class=\"completed\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.complete : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</ul></div>";
 },"useData":true});
 
