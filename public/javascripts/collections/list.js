@@ -7,28 +7,28 @@ var List = Backbone.Collection.extend({
   },
 
   getFilters: function() {
-    var filters = { complete: {}, incomplete: {} };
+    var filters = {};
+
     this.each(function(todo) {
-      var complete = todo.get('completed') ? 'complete' : 'incomplete';
       var month = todo.getMonth();
       var year = todo.getYear();
-      var label_name = '' + month + '_' + year;
-      var filter_group = filters[complete];
+      var completed = todo.get('completed');
+      var key = '' + month + '_' + year;
+      if (completed) { key += '_c'; }
 
-      if (!_(filter_group).has(label_name)) {
+      if (!_(filters).has(key)) {
         var new_filter = {
-          label: label_name.replace('_', '/'),
-          month: month,
-          year: year,
+          label: key.replace('_', '/'),
+          due_month: month,
+          due_year: year,
+          completed: completed,
           count: 1
         };
 
-        if (complete === 'complete') { label_name = label_name + "_c"; }
-
-        filter_group[label_name] = new_filter;
+        filters[key] = new_filter;
       }
       else {
-        filter_group[label_name].count += 1;
+        filters[key].count += 1;
       }
     });
 
@@ -38,7 +38,8 @@ var List = Backbone.Collection.extend({
     };
 
     filters.all_c = {
-      label: 'Completed'
+      label: 'Completed',
+      completed: true
     };
 
     return filters;
